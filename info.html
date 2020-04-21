@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Info</title>
+        <link href="css/stylesheet.css" rel="stylesheet" type="text/css"/>
+    </head>
+    
+    <body>
+        <div id="container">
+            <div id="heading"><img id="heading_img" src="img/heading.png" onclick="loadImg()"></div>
+            
+            <div id="menu">
+				<div class="menuBackground">
+					<ul class="dropDownMenu">
+						<li><a href="index.html">Home</a>
+						<li><a  class="isSelected" href="#">Info</a></li>
+						<li><a href="learn.html">Learn</a>
+							<ul>
+								<li><a href="learn.html#area1">Create a Thread</a></li>
+								<li><a href="learn.html#area2">Start a Thread</a></li>
+								<li><a href="learn.html#area3">Stop a Thread</a></li>
+								<li><a href="learn.html#area4">Name a Thread</a></li>
+							</ul>
+						</li>
+						<li><a href="exercise.html">Exercises</a>
+							<ul>
+								<li><a href="exercise.html#area1">1. Create a Thread</a></li>
+								<li><a href="exercise.html#area2">2. Start a Thread</a></li>
+								<li><a href="exercise.html#area3">3. Name a Thread</a></li>
+							</ul>
+                        </li>
+						<li><a href="https://docs.oracle.com/javase/8/docs/api/index.html?java/lang/Thread.html" target="_blank">API</a></li>
+						<li><a href="about.html">About</a></li>
+					</ul>
+				</div>
+			</div>
+            
+            <div id="content">
+                <p>Multithreading (using Threads) is a very common and practical function, used in many ordinary programs.<br><br></p>    
+                
+                <h2>What is a thread?</h2>
+                
+                <p>
+                    A Thread is an independent path of execution within a program.<br>
+                    All programs have at least one thread, known as the main Thread (created by the JVM, Java Virtual Machine).<br><br></p>
+                
+                <h2>So then, what is multi-threading?</h2>
+                
+                <p>
+                    To put it simply, <u>multi-threading is the process of executing multiple threads simultaneously.</u><br>
+                </p>
+                
+                <div class="animBox">
+                    <div id="left-container">
+                        <p style="text-align: center;">One Thread Execution</p>
+                        <div id="left">
+                            <canvas id="canvas" style="position: absolute; left: 255px; top: 650px;" width="50" height="249">
+                            </canvas>
+                            <span style="position: absolute; left: 150px; top: 630px;">
+                                <p>Start</p>
+                            </span>
+                            <div id="thread1" onclick="moveAnim1()"></div>
+                            <span style="position: absolute; left: 150px; top: 881px;">
+                                <p>End</p>
+                            </span>
+                        </div>
+                    </div>
+                    <div id="right-container">
+                        <p style="text-align: center;">Multiple Thread Execution</p>
+                        <div id="right">
+                            <canvas id="canvas2" style="position: absolute; left: 615px; top: 650px;" width="200" height="250">
+                            </canvas>
+                            <span style="position: absolute; left: 550px; top: 630px;">
+                                <p>Start</p>
+                            </span>
+                            <span style="position: absolute; left: 550px; top: 680px;">
+                                <p>Create<br>threads</p>
+                            </span>
+                            <div id="thread3"></div>
+                            <div id="thread4"></div>
+                            <div id="thread2" onclick="moveAnim2()"></div>
+                            <span style="position: absolute; left: 550px; top: 881px;">
+                                <p>End</p>
+                            </span>
+                        </div>
+                    </div>
+                    <button id="startBtn" onclick="moveAnims()">start anim</button>
+                    <button id="reloadBtn" onclick="reload()">reload</button>
+                </div>
+                <br><br><br>
+            </div>
+        </div>
+        
+        <script>
+            var ctx = document.getElementById("canvas").getContext("2d");
+            ctx.beginPath();
+            ctx.arc(25, 9, 2, 0, 2 * Math.PI);
+            ctx.fillStyle = "black";
+            ctx.fill();
+            canvas_arrow1(ctx, 25, 9, 25, 249);
+            ctx.stroke();
+            
+            function canvas_arrow1(context, fromx, fromy, tox, toy) 
+            {
+              var headlen = 10; // length of head in pixels
+              var dx = tox - fromx;
+              var dy = toy - fromy;
+              var angle = Math.atan2(dy, dx);
+              context.moveTo(fromx, fromy);
+              context.lineTo(tox, toy);
+              context.lineTo(tox - headlen * Math.cos(angle - Math.PI / 6), toy - headlen * Math.sin(angle - Math.PI / 6));
+              context.moveTo(tox, toy);
+              context.lineTo(tox - headlen * Math.cos(angle + Math.PI / 6), toy - headlen * Math.sin(angle + Math.PI / 6));
+            }
+            
+            var ctx2 = document.getElementById("canvas2").getContext("2d");
+            ctx2.beginPath();
+            ctx2.arc(100, 9, 2, 0, 2 * Math.PI);
+            ctx2.moveTo(100, 52);
+            ctx2.arc(100, 52, 2, 0, 2 * Math.PI);
+            ctx2.moveTo(100, 102);
+            ctx2.arc(100, 102, 2, 0, 2 * Math.PI);
+            ctx2.moveTo(20, 102);
+            ctx2.arc(20, 102, 2, 0, 2 * Math.PI);
+            ctx2.moveTo(180, 102);
+            ctx2.arc(180, 102, 2, 0, 2 * Math.PI);
+            ctx2.fillStyle = "black";
+            ctx2.fill();
+            
+            canvas_arrow2(ctx2, 100, 9, 100, 48);
+            canvas_arrow2(ctx2, 100, 52, 20, 98);
+            canvas_arrow2(ctx2, 100, 52, 100, 98);
+            canvas_arrow2(ctx2, 100, 52, 180, 98);
+            canvas_arrow2(ctx2, 20, 102, 20, 250);
+            canvas_arrow2(ctx2, 100, 102, 100, 250);
+            canvas_arrow2(ctx2, 180, 102, 180, 250);
+            ctx2.stroke();
+            
+            function canvas_arrow2(context, fromx, fromy, tox, toy) 
+            {
+              var headlen = 10; // length of head in pixels
+              var dx = tox - fromx;
+              var dy = toy - fromy;
+              var angle = Math.atan2(dy, dx);
+              context.moveTo(fromx, fromy);
+              context.lineTo(tox, toy);
+              context.lineTo(tox - headlen * Math.cos(angle - Math.PI / 6), toy - headlen * Math.sin(angle - Math.PI / 6));
+              context.moveTo(tox, toy);
+              context.lineTo(tox - headlen * Math.cos(angle + Math.PI / 6), toy - headlen * Math.sin(angle + Math.PI / 6));
+            }
+            
+        </script>
+            
+        <script>
+            function reload()
+            {
+				/* Code found through StackOverflow */
+				var thread1Anim = document.getElementById('thread1');
+				thread1Anim.style.animation = 'none';
+				thread1Anim.offsetHeight;
+				thread1Anim.style.animation = null; 
+				
+				var thread2Anim = document.getElementById('thread2');
+				thread2Anim.style.animation = 'none';
+				thread2Anim.offsetHeight;
+				thread2Anim.style.animation = null; 
+				
+				var thread3Anim = document.getElementById('thread3');
+				thread3Anim.style.animation = 'none';
+				thread3Anim.offsetHeight;
+				thread3Anim.style.animation = null; 
+				
+				var thread4Anim = document.getElementById('thread4');
+				thread4Anim.style.animation = 'none';
+				thread4Anim.offsetHeight;
+				thread4Anim.style.animation = null; 
+            }
+            
+            function moveAnims()
+            {
+                document.getElementById("thread1").style.animationPlayState = "running";
+                document.getElementById("thread2").style.animationPlayState = "running";
+                document.getElementById("thread3").style.animationPlayState = "running";
+                document.getElementById("thread4").style.animationPlayState = "running";
+            }
+            
+            function moveAnim1()
+            {
+                document.getElementById("thread1").style.animationPlayState = "running";
+            }
+            
+            function moveAnim2()
+            {
+                document.getElementById("thread2").style.animationPlayState = "running";
+                document.getElementById("thread3").style.animationPlayState = "running";
+                document.getElementById("thread4").style.animationPlayState = "running";
+            }
+        </script>
+        
+        <button id="scrollToTopBtn" title="Scroll to Top" onclick="topFunction(document)"></button>
+
+        <script>
+            var button = document.getElementById("scrollToTopBtn");
+
+            window.onscroll = function() {scrollFunction()};
+
+            function scrollFunction()
+            {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20)
+                {
+                    button.style.display = "block";
+                }
+                else
+                {
+                    button.style.display = "none";
+                }
+            }
+
+            function topFunction()
+            {
+                document.body.scrollTop = 0;
+
+                document.documentElement.scrollTop = 0;
+            }
+            
+            function loadImg()
+            {
+                document.getElementById("heading_img").setAttribute("src", "img/heading.gif");
+            }
+        </script>
+    </body>
+</html>

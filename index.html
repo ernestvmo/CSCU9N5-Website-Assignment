@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Homepage</title>
+        <link href="css/stylesheet.css" rel="stylesheet" type="text/css"/>
+	</head>
+    
+	<body>
+		<div id="container">
+			<div id="heading_gif" style=" background-color: #e0e0ff;"><img id="heading_img" src="img/heading.gif" onclick="loadImg()"></div>
+			
+			<div id="menu">
+				<div class="menuBackground">
+					<ul class="dropDownMenu">
+						<li><a href="index.html" class="isSelected">Home</a>
+						<li><a href="info.html">Info</a></li>
+						<li><a href="learn.html">Learn</a>
+							<ul>
+								<li><a href="learn.html#area1">Create a Thread</a></li>
+								<li><a href="learn.html#area2">Start a Thread</a></li>
+								<li><a href="learn.html#area3">Stop a Thread</a></li>
+								<li><a href="learn.html#area4">Name a Thread</a></li>
+							</ul>
+						</li>
+						<li><a href="exercise.html">Exercises</a>
+							<ul>
+								<li><a href="exercise.html#area1">1. Create a Thread</a></li>
+								<li><a href="exercise.html#area2">2. Start a Thread</a></li>
+								<li><a href="exercise.html#area3">3. Name a Thread</a></li>
+							</ul>
+                        </li>
+						<li><a href="https://docs.oracle.com/javase/8/docs/api/index.html?java/lang/Thread.html" target="_blank">API</a></li>
+						<li><a href="about.html">About</a></li>
+					</ul>
+				</div>
+			</div>
+			
+			<div id="content">
+				<p id="pHome">
+                    Welcome on JavaLearn! <br><br>
+                    Here you can follow our tutorials to help you learn more about Java Threads!</p>
+			</div>
+		</div>
+            
+        <button id="scrollToTopBtn" title="Scroll to Top" onclick="topFunction(document)"></button>
+
+        <script>
+            var button = document.getElementById("scrollToTopBtn");
+
+            window.onscroll = function() {scrollFunction()};
+
+            function scrollFunction()
+            {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20)
+                {
+                    button.style.display = "block";
+                }
+                else
+                {
+                    button.style.display = "none";
+                }
+            }
+
+            function topFunction()
+            {
+                document.body.scrollTop = 0;
+
+                document.documentElement.scrollTop = 0;
+            }
+            
+            function loadImg()
+            {
+                document.getElementById("heading_img").setAttribute("src", "img/heading.gif");
+            }
+        </script>
+	</body>
+</html>

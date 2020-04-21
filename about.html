@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>About</title>
+        <link href="css/stylesheet.css" rel="stylesheet" type="text/css"/>
+	</head>
+	
+	<body>
+		<div id="container">
+			<div id="heading"><img id="heading_img" src="img/heading.png" onclick="loadImg()"></div>
+			
+			<div id="menu">
+				<div class="menuBackground">
+					<ul class="dropDownMenu">
+						<li><a href="index.html">Home</a>
+						<li><a href="info.html">Info</a></li>
+						<li><a href="learn.html">Learn</a>
+							<ul>
+								<li><a href="learn.html#area1">Create a Thread</a></li>
+								<li><a href="learn.html#area2">Start a Thread</a></li>
+								<li><a href="learn.html#area3">Stop a Thread</a></li>
+								<li><a href="learn.html#area4">Name a Thread</a></li>
+							</ul>
+						</li>
+						<li><a href="exercise.html">Exercises</a>
+							<ul>
+								<li><a href="exercise.html#area1">1. Create a Thread</a></li>
+								<li><a href="exercise.html#area2">2. Start a Thread</a></li>
+								<li><a href="exercise.html#area3">3. Name a Thread</a></li>
+							</ul>
+                        </li>
+						<li><a href="https://docs.oracle.com/javase/8/docs/api/index.html?java/lang/Thread.html" target="_blank">API</a></li>
+						<li><a class="isSelected" href="#">About</a></li>
+					</ul>
+				</div>
+			</div>
+			
+			<div id="content">
+				<p style="margin-top: 50px;">
+                    JavaLearn was created by Ernest Vanmosuinck for a school project. <br><br>
+                    <br>
+                    The exercises were taken or inspared from "<a href="https://www.amazon.co.uk/Java-Threads-Scott-Oaks/dp/0596007825/ref=sr_1_6?keywords=java+threads&qid=1572288981&sr=8-6" target="_blank">Java Threads</a>", published by <a href="http://shop.oreilly.com/" target="_blank">O'Reilly</a>.
+                    <br><br><br>
+                    The tutorial were taken from <a href="http://www.csc.villanova.edu/~mdamian/threads/javathreads.html" target="_blank">this website.</a>
+                </p>
+			</div>
+		</div>
+            
+        <button id="scrollToTopBtn" title="Scroll to Top" onclick="topFunction(document)"></button>
+
+        <script>
+            var button = document.getElementById("scrollToTopBtn");
+
+            window.onscroll = function() {scrollFunction()};
+
+            function scrollFunction()
+            {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20)
+                {
+                    button.style.display = "block";
+                }
+                else
+                {
+                    button.style.display = "none";
+                }
+            }
+
+            function topFunction()
+            {
+                document.body.scrollTop = 0;
+
+                document.documentElement.scrollTop = 0;
+            }
+            
+            function loadImg()
+            {
+                document.getElementById("heading_img").setAttribute("src", "img/heading.gif");
+            }
+        </script>
+	</body>
+</html>

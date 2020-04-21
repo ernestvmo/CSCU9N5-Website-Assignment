@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Learn</title>
+        <link href="css/stylesheet.css" rel="stylesheet" type="text/css"/>
+        <base href="learn.html">
+    </head>
+
+    <body>
+        <div id="container">
+            <div id="heading"><img id="heading_img" src="img/heading.png" onclick="loadImg()"></div>
+
+            <div id="menu">
+				<div class="menuBackground">
+					<ul class="dropDownMenu">
+						<li><a href="index.html">Home</a>
+						<li><a href="info.html">Info</a></li>
+						<li><a  class="isSelected" href="#">Learn</a>
+							<ul>
+								<li><a href="learn.html#area1">Create a Thread</a></li>
+								<li><a href="learn.html#area2">Start a Thread</a></li>
+								<li><a href="learn.html#area3">Stop a Thread</a></li>
+								<li><a href="learn.html#area4">Name a Thread</a></li>
+							</ul>
+						</li>
+						<li><a href="exercise.html">Exercises</a>
+							<ul>
+								<li><a href="exercise.html#area1">1. Create a Thread</a></li>
+								<li><a href="exercise.html#area2">2. Start a Thread</a></li>
+								<li><a href="exercise.html#area3">3. Name a Thread</a></li>
+							</ul>
+                        </li>
+						<li><a href="https://docs.oracle.com/javase/8/docs/api/index.html?java/lang/Thread.html" target="_blank">API</a></li>
+						<li><a href="about.html">About</a></li>
+					</ul>
+				</div>
+			</div>
+
+            <div id="content">
+                <p id="pHome">In this section, you will learn step by step everything you need to create and master Java Threads.</p>
+                <h2>Index</h2>
+                <ul class="contentList">
+                    <li><a href="#area1">Creating a Thread</a></li><br>
+                    <li><a href="#area2">Starting a Thread</a></li><br>
+                    <li><a href="#area3">Stopping a Thread</a></li><br>
+                    <li><a href="#area4">Naming a Thread</a></li><br>
+                    <li><a href="#area5"><i>sleep()</i> method</a> (not yet implemented)</li><br>
+					<li><a href="#area6">What does thread-safe mean?</a> (not yet implemented)</li><br>
+                    <li><a href="#area7"><i>synchronized</i> keyword</a> (not yet implemented)</li><br>
+                    <li><a href="#area8">Deadlocks</a> (not yet implemented)</li><br>
+					<li><a href="#area9">synchronous vs. asynchronous</a> (not yet implemented)</li><br>
+                    <li>More to be implemented soon...</li><br>
+                </ul>
+
+                <br>
+                <hr size="2px" width="90%" style="border-color: black;"/>
+                <br>
+
+                <div>
+                    <h2><a id="area1"></a>Creating a Thread</h2>
+
+                    <p>In Java, there are two ways of creating a Thread.</p>
+
+                    <ul>
+                        <li><p>Extending the Thread class.</p></li>
+                    </ul>
+
+                    <div id="codeSection">
+                        <p>class JavaThread extends Thread<br>{<br></p>
+                        <p class="tag">...</p>
+                        <p>}</p>
+                    </div>
+                    <br>
+
+                    <ul>
+                        <li><p>Implementing the <i>Runnable</i> interface.</p></li>
+                    </ul>
+
+                    <div id="codeSection">
+                        <p>class JavaThread implements Runnable<br>{<br></p>
+                        <p class="tag">...</p>
+                        <p>}</p>
+                    </div>
+                    <br>
+
+                    <p>
+                        In general, it is easier to extends the <i>Thread</i> class. But sometimes, we class is already extending some other class, and Java does not allow multiple inheritance.<br>
+                        That is why we have to implement the <i>Runnable</i> interface.
+                        <br><br>
+                        As it is more commonly used, we will be using the first techniques for these Tutorial, unless mentioned.<br>
+                        To create Threads, use the following:<br>
+                    </p>
+
+                    <div id="codeSection">
+                        <p>JavaThread thread = new JavaThread();</p>
+                    </div>
+                    
+                    <a id="exerciseLink" href="exercise.html#area1">Go to the exercise about this section.</a>
+                    <br>
+                    <br>
+                </div>
+
+                <div>
+                    <h2><a id="area2"></a>Starting a Thread</h2>
+
+                    <p>There are three important methods used to control Threads:<br></p>
+
+                    <div id="codeSection">
+                        <ul>
+                            <li><p>public void start()</p></li>
+                            <li><p>public void run()</p></li>
+                            <li><p>public void stop()</p></li>
+                        </ul>
+                    </div>
+
+                    <br>
+
+                    <p>We will cover the first two in this section, and the last one in the next section.</p><br>
+
+                    <div class="text">
+                        <p>The </p><p id="code">start()</p><p> method prepares a thread to be run; the </p><p id="code">run()</p><p> method actually performs the work of the thread - it serves as the main routine for the thread.</p><br><br>
+                        <p>The class that <i>extends Thread</i> must redefine the </p><p id="code">run()</p><p> method of <i>Thread</i>.</p><br>
+                        <p style="font-size:28px; color: red;">&#9888;</p><p style="color: red;"> To start the thread actually running, you do not invoke the </p>
+                        <p id="code" style="color: red;">run()</p><p style="color: red;"> method. Rather, you invoke the </p><p id="code" style="color: red;">start()</p>
+                        <p style="color: red;"> method on your object:</p><br>
+                    </div>
+
+                    <div id="codeSection">
+                        <p>thread.start();</p>
+                    </div>
+
+                    <div class="text">
+                        <p>The </p><p id="code">run()</p><p> method is caaled automatically at runtime as necessary, once you have called </p><p id="code">start()</p>
+                        <p>.</p>
+                    </div>
+                    
+                    <a id="exerciseLink" href="exercise.html#area2">Go to the exercise about this section.</a>
+                    <br>
+                    <br>
+                </div>
+
+                <div>
+                    <h2><a id="area3"></a>Stopping a Thread</h2>
+
+                    <div class="text">
+                        <p><br>The thread dies when the </p><p id="code">run()</p><p> method terminates or when the thread's </p><p id="code">stop()</p><p> method is invoked:</p><br>
+                    </div>
+
+                    <div id="codeSection">
+                        <p>thread.stop();</p>
+                    </div>
+
+                    <div class="text">
+                        <p>It is not recommended to stop a thread using the </p><p id="code">stop()</p><p> method (it is deprecated, as it is not thread-safe (we will cover this part in the future)).</p>
+                    </div>
+                    <br>
+                </div>
+
+                <div>
+                    <h2 ><a id="area4"></a>Naming a Thread</h2>
+
+                    <p>If you create multiple threads from the same class, it is often useful to give them names to tell them apart.<br></p>
+                    <p>The <i>Thread</i> class provides a constructor to do this:<br></p>
+
+                    <div id="codeSection">
+                        <p>public Thread(String name) { ... }</p>
+                    </div>
+
+                    <p>This is called using your subclass like this:<br></p>
+
+                    <div id="codeSection">
+                        <p>class JavaThread extends Thread<br>{<br></p>
+                        <div class="tag">
+                            <p>public JavaThread(String name)<br>{<br></p>
+                            <p class="tag">super(name);</p>
+                            <p>}</p>
+                            <br>
+                            <p>public void run()<br>{<br></p>
+                            <p class="tag">
+                                System.out.println(this.getName());<br>
+                                ...</p>
+                            <p>}</p>
+                        </div>
+                        <p>}</p>
+                    </div>
+
+                    <p>So when you create your threads:<br></p>
+
+                    <div id="codeSection">
+                        <p>
+                            JavaThread thread1 = new JavaThread("Thread 1");<br>
+                            JavaThread thread2 = new JavaThread("Thread 2");<br><br>
+
+                            thread1.start();<br>
+                            thread2.start();
+                        </p>
+                    </div>
+
+                    <p>The console will display the name of the two threads created.</p>
+
+                    <a id="exerciseLink" href="exercise.html#area3">Go to the exercise about this section.</a>
+                    <br>
+                    <br>
+                </div>
+
+                <h2 ><a id="area4"></a><i>sleep()</i> method</h2>
+
+                <p>No yet implemented.</p>
+
+                <br>
+
+                <h2><a id="area5"></a>Thread-safe implementation</h2>
+
+                <p>No yet implemented.</p>
+
+                <br>
+
+                <h2><a id="area6"></a><i>synchronized</i> keyword</h2>
+
+                <p>No yet implemented.</p>
+
+                <br>
+
+                <h2><a id="area7"></a>Deadlocks</h2>
+
+                <p>No yet implemented.</p>
+
+                <br>
+
+                <h2><a id="area8"></a>synchronous vs. asynchronous</h2>
+
+                <p>No yet implemented.</p>
+
+                <br>
+            </div>
+        </div>
+
+        <button id="scrollToTopBtn" title="Scroll to Top" onclick="topFunction(document)"></button>
+
+        <script>
+            var button = document.getElementById("scrollToTopBtn");
+
+            window.onscroll = function() {scrollFunction()};
+
+            function scrollFunction()
+            {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20)
+                {
+                    button.style.display = "block";
+                }
+                else
+                {
+                    button.style.display = "none";
+                }
+            }
+
+            function topFunction()
+            {
+                document.body.scrollTop = 0;
+
+                document.documentElement.scrollTop = 0;
+            }
+
+            function loadImg()
+            {
+                document.getElementById("heading_img").setAttribute("src", "img/heading.gif");
+            }
+        </script>
+    </body>
+</html>

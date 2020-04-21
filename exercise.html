@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<hmtl>
+    <head>
+        <title>exercises</title>
+        <link href="css/stylesheet.css" rel="stylesheet" type="text/css"/>
+        <base href="exercise.html">
+    </head>
+
+    <body>
+        <div id="container">
+            <div id="heading"><img id="heading_img" src="img/heading.png" onclick="loadImg()"></div>
+
+            <div id="menu">
+				<div class="menuBackground">
+					<ul class="dropDownMenu">
+						<li><a href="index.html">Home</a>
+						<li><a href="info.html">Info</a></li>
+						<li><a href="learn.html">Learn</a>
+							<ul>
+								<li><a href="learn.html#area1">Create a Thread</a></li>
+								<li><a href="learn.html#area2">Start a Thread</a></li>
+								<li><a href="learn.html#area3">Stop a Thread</a></li>
+								<li><a href="learn.html#area4">Name a Thread</a></li>
+							</ul>
+						</li>
+						<li><a class="isSelected" href="#">Exercises</a>
+							<ul>
+								<li><a href="exercise.html#area1">1. Create a Thread</a></li>
+								<li><a href="exercise.html#area2">2. Start a Thread</a></li>
+								<li><a href="exercise.html#area3">3. Name a Thread</a></li>
+							</ul>
+                        </li>
+						<li><a href="https://docs.oracle.com/javase/8/docs/api/index.html?java/lang/Thread.html" target="_blank">API</a></li>
+						<li><a href="about.html">About</a></li>
+					</ul>
+				</div>
+			</div>
+
+            <div id="content">
+                <p id="pHome">In this section, you will get to practice each section from the Learn page.</p>
+
+                <h2>Index</h2>
+
+                <ul class="contentList">
+                    <li><a href="#area1">Creating a Thread</a></li><br>
+                    <li><a href="#area2">Starting a Thread</a></li><br>
+                    <li><a href="#area3">Naming a Thread</a></li><br>
+                    <li><a href="#area4"><i>sleep()</i> method</a> (not yet implemented)</li><br>
+                    <li><a href="#area5"><i>synchronized</i> keyword</a> (not yet implemented)</li><br>
+                    <li><a href="#area6">Deadlocks</a> (not yet implemented)</li><br>
+                    <li>More to be implemented soon...</li><br>
+                </ul>
+
+                <hr size="1px" width="50%" style="border-color: black;"/>
+
+                <h2>Solutions</h2>
+                <ul class="exercises">
+                    <li><a href="files/file.txt" target="_blank" download>Problem 1</a></li><br>
+                    <li><a href="files/file.txt" target="_blank" download>Problem 2</a></li><br>
+                    <li><a href="files/file.txt" target="_blank" download>Problem 3</a></li><br>
+                </ul>
+
+                <br>
+                <hr size="2px" width="90%" style="border-color: black;"/>
+                <br>
+
+                <div>
+                    <h2><a id="area1"></a>Creating a Thread</h2>
+
+                    <ul class="exercises">
+                        <li>Create a program that uses the two ways of implementing Threads.</li>
+                    </ul>
+                    <br>
+                </div>
+
+                <div>
+                    <h2><a id="area2"></a>Starting a Thread</h2>
+
+                    <ul class="exercises">
+                        <li>Create a program that implements a Thread.</li><br>
+                        <li>
+                            <div class="text" style="margin-left: 0px; margin-top: 0px;">
+                                Implement the <p id="code">run()</p> method as to display a message to the user when the Thread has started.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2><a id="area3"></a>Naming a Thread</h2>
+
+                    <ul class="exercises">
+                        <li>Create a program that implements 5 threads from the same class. Make sure that you name each thread appropriately.</li><br>
+                        <li>
+                            <div class="text" style="margin-left: 0px; margin-top: 0px; margin-bottom: 0px;">
+                                Implement each <p id="code">run()</p> method as to display each thread's name.
+                            </div>
+                        </li><br>
+                        <li>Watch the order in which you start the threads and the order in which the names appear!</li>
+                    </ul>
+                    <br>
+                </div>
+
+                <div>
+                    <h2 ><a id="area4"></a><i>sleep()</i> method</h2>
+
+                    <p>No yet implemented.</p>
+
+                    <br>
+                </div>
+
+                <div>
+                    <h2><a id="area6"></a><i>synchronized</i> keyword</h2>
+
+                    <p>No yet implemented.</p>
+
+                    <br>
+                </div>
+
+                <div>
+                    <h2><a id="area7"></a>Deadlocks</h2>
+
+                    <p>No yet implemented.</p>
+
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <button id="scrollToTopBtn" title="Scroll to Top" onclick="topFunction(document)"></button>
+
+        <script>
+            var button = document.getElementById("scrollToTopBtn");
+
+            window.onscroll = function() {scrollFunction()};
+
+            function scrollFunction()
+            {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20)
+                {
+                    button.style.display = "block";
+                }
+                else
+                {
+                    button.style.display = "none";
+                }
+            }
+
+            function topFunction()
+            {
+                document.body.scrollTop = 0;
+
+                document.documentElement.scrollTop = 0;
+            }
+
+            function loadImg()
+            {
+                document.getElementById("heading_img").setAttribute("src", "img/heading.gif");
+            }
+        </script>
+    </body>
+</hmtl>
